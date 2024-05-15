@@ -26,7 +26,7 @@ argocd admin initial-password -n argocd
 argocd login localhost:8080 o el puerto correspondiente si cambie el service a nodeport <30080>
 ```
 
-* Crear proyecto, con archivos de manifiesto::
+* Crear proyecto, con archivos de manifiesto:
 
 ```
 argocd app create pokedex-local-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX --dest-server https://kubernetes.default.svc --dest-namespace default
