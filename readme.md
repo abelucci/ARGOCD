@@ -23,7 +23,7 @@ argocd admin initial-password -n argocd
 * Loguerase:
 
 ```
-argocd login localhost:8080
+argocd login localhost:8080 o el puerto correspondiente si cambie el service a nodeport <30080>
 ```
 
 * Crear proyecto:
@@ -37,7 +37,6 @@ argocd app create pokedex-local-it --repo https://github.com/abelucci/KUBERNETES
 ```
 kubectl get applications -n argocd
 ```
-
 
 # **LANZAR APP EN AZURE**
 
@@ -74,5 +73,43 @@ Crear cluster en la nube para poder implementar el servicio.
   ```
   kubectl config get-contexts
   ```
+
   ![1715779830400.png](./images/1715779830400.png)
 * Seleccionar el cluster donde vamos a trabajar:
+
+  ```
+  kubectl config use-context <name cluster>
+  ```
+* Por útimo, deployar APP de APPS en argo::
+
+  ```
+  argocd app create pokedex-azure-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX-AZURE --dest-server https://kube-it-dns-mldc00n1.hcp.eastus.azmk8s.io:443 --dest-namespace default
+  ```
+* Verificar todos los servicios creados:
+
+  ```
+  kubectl get all -n argocd (solo en ese namespace)
+  kubectl get all
+  ```
+
+  # **FQDN EN AZURE**
+* Para poder tener un nombre FQDN, se debe agregar la siguiente linea en el archivo de maniesto services.yml:
+
+  ![1715785677345.png](./images/1715785677345.png)
+* La dirección prefijada seria la siguiente:
+
+  ```
+  <…>.eastus.cloudapp.azure.com
+  myserviceuniquelabel.eastus.cloudapp.azure.com
+
+  ```
+* Dando como resultado:
+
+  ```
+  my-pokedex-it.eastus.cloudapp.azure.com:<puertocorrespondiente>
+
+  ```
+
+  ![1715785774095.png](./images/1715785774095.png)
+
+  ![1715785774095.png](./images/1715785317936.png)
