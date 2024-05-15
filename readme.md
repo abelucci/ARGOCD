@@ -80,7 +80,7 @@ Crear cluster en la nube para poder implementar el servicio.
   ```
   kubectl config use-context <name cluster>
   ```
-* Por útimo, deployar APP de APPS en argo::
+* Por útimo, deployar APP de APPS en argo:
 
   ```
   argocd app create pokedex-azure-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX-AZURE --dest-server https://kube-it-dns-mldc00n1.hcp.eastus.azmk8s.io:443 --dest-namespace default
