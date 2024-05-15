@@ -26,7 +26,7 @@ argocd admin initial-password -n argocd
 argocd login localhost:8080 o el puerto correspondiente si cambie el service a nodeport <30080>
 ```
 
-* Crear proyecto:
+* Crear proyecto, archivos de manifiesto:
 
 ```
 argocd app create pokedex-local-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX --dest-server https://kubernetes.default.svc --dest-namespace default
@@ -73,7 +73,6 @@ Crear cluster en la nube para poder implementar el servicio.
   ```
   kubectl config get-contexts
   ```
-
   ![1715779830400.png](./images/1715779830400.png)
 * Seleccionar el cluster donde vamos a trabajar:
 
@@ -91,7 +90,6 @@ Crear cluster en la nube para poder implementar el servicio.
   kubectl get all -n argocd (solo en ese namespace)
   kubectl get all
   ```
-
   # **FQDN EN AZURE**
 * Para poder tener un nombre FQDN, se debe agregar la siguiente linea en el archivo de maniesto services.yml:
 
@@ -109,7 +107,6 @@ Crear cluster en la nube para poder implementar el servicio.
   my-pokedex-it.eastus.cloudapp.azure.com:<puertocorrespondiente>
 
   ```
-
   ![1715785774095.png](./images/1715785774095.png)
 
   ![1715785774095.png](./images/1715785317936.png)
