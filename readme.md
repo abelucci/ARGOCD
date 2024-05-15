@@ -23,7 +23,7 @@ argocd admin initial-password -n argocd
 * Loguerase:
 
 ```
-argocd login localhost:8080 o el puerto correspondiente si cambie el service a nodeport <30080>
+argocd login localhost:8080
 ```
 
 * Crear proyecto:
@@ -78,16 +78,5 @@ Crear cluster en la nube para poder implementar el servicio.
 * Seleccionar el cluster donde vamos a trabajar:
 
   ```
-  kubectl config use-context <name cluster>
-  ```
-* Por útimo, deployar APP de APPS en argo:
-
-  ```
-  argocd app create pokedex-azure-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX-AZURE --dest-server https://kube-it-dns-mldc00n1.hcp.eastus.azmk8s.io:443 --dest-namespace default
-  ```
-* Verificar todos los servicios creados:
-
-  ```
-  kubectl get all -n argocd (solo en ese namespace)
-  kubectl get all
+  kubectl config use-context <nombre del cluster>
   ```
