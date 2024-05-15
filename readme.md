@@ -76,7 +76,3 @@ Crear cluster en la nube para poder implementar el servicio.
   ```
   ![1715779830400.png](./images/1715779830400.png)
 * Seleccionar el cluster donde vamos a trabajar:
-
-  ```
-  kubectl config use-context <nombre del cluster>
-  ```
