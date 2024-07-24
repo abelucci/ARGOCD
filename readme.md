@@ -80,23 +80,22 @@ Crear cluster en la nube para poder implementar el servicio.
   ```
   kubectl config get-contexts
   ```
+
   ![1715779830400.png](./images/1715779830400.png)
 * Seleccionar el cluster donde vamos a trabajar:
 
   ```
   kubectl config use-context <name cluster>
+  argocd cluster add docker-desktop (agregar el cluster a argoCD para deploy directo)
   ```
-* 
+* Por útimo, deployar APP de APPS en argo:
 
+```
+argocd app create pokedex-azure-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX-AZURE --dest-server https://kube-it-dns-mldc00n1.hcp.eastus.azmk8s.io:443 --dest-namespace default
+```
 
+Tener en cuenta que se modificó en el archivo de manifiesto *services.yaml*, el tipo de servicio a *LoadBalancer*.
 
-
-  Por útimo, deployar APP de APPS en argo:
-
-  ```
-  argocd app create pokedex-azure-it --repo https://github.com/abelucci/KUBERNETES.git --path POKEDEX-AZURE --dest-server https://kube-it-dns-mldc00n1.hcp.eastus.azmk8s.io:443 --dest-namespace default
-  ```
-  Tener en cuenta que se modificó en el archivo de manifiesto *services.yaml*, el tipo de servicio a *LoadBalancer*.
 * Con **Helm chart**:
 
   ```
